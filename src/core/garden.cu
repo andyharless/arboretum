@@ -88,10 +88,7 @@ gain_func(const double2 left_sum, const double2 total_sum,
     const float r = (right_sum.x * right_sum.x) / (right_sum.y + params.lambda);
     const float p = (total_sum.x * total_sum.x) / (total_sum.y + params.lambda);
     const float diff = l + r - p;
-    if (diff > params.gamma_absolute && diff > params.gamma_relative * p)
-      return diff;
-    else
-      return 0.0;
+    return (diff > params.gamma_absolute && diff > params.gamma_relative * p) * diff;
   } else {
     return 0.0;
   }
@@ -110,10 +107,7 @@ gain_func(const float2 left_sum, const float2 total_sum,
     const float r = (right_sum.x * right_sum.x) / (right_sum.y + params.lambda);
     const float p = (total_sum.x * total_sum.x) / (total_sum.y + params.lambda);
     const float diff = l + r - p;
-    if (diff > params.gamma_absolute && diff > params.gamma_relative * p)
-      return diff;
-    else
-      return 0.0;
+    return (diff > params.gamma_absolute && diff > params.gamma_relative * p) * diff;
   } else {
     return 0.0;
   }
@@ -130,10 +124,7 @@ gain_func(const float left_sum, const float total_sum, const size_t left_count,
     const float r = right_sum * right_sum / (right_count + params.lambda);
     const float p = total_sum * total_sum / (total_count + params.lambda);
     const float diff = l + r - p;
-    if (diff > params.gamma_absolute && diff > params.gamma_relative * p)
-      return diff;
-    else
-      return 0.0;
+    return (diff > params.gamma_absolute && diff > params.gamma_relative * p) * diff;
   } else {
     return 0.0;
   }
@@ -151,10 +142,7 @@ gain_func(const double left_sum, const double total_sum,
     const double r = right_sum * right_sum / (right_count + params.lambda);
     const double p = total_sum * total_sum / (total_count + params.lambda);
     const double diff = l + r - p;
-    if (diff > params.gamma_absolute && diff > params.gamma_relative * p)
-      return diff;
-    else
-      return 0.0;
+    return (diff > params.gamma_absolute && diff > params.gamma_relative * p) * diff;
   } else {
     return 0.0;
   }
