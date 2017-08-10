@@ -1,5 +1,5 @@
 # CUDA compute capability
-export sm = 610
+export sm = 370
 # compiler by default
 export CXX = g++
 OS := $(shell uname)
