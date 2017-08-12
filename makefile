@@ -11,6 +11,9 @@ endif
 
 include _cub/common.mk
 
+# Floyd can't seem to find this, so set explicitly?
+export NVCC=/usr/local/cuda/bin/nvcc
+
 export CC = $(NVCC) $(DEFINES) $(SM_TARGETS)
 export LDFLAGS= -lm
 export CFLAGS = $(NVCCFLAGS) -O3 -I_cub/ -I_json/src/ -std=c++11 -Xcompiler -fPIC -Xcompiler -O3 -Xcompiler -fopenmp -Xcompiler -Wall -Xcompiler -funroll-loops -Xcompiler -march=native -ccbin=$(CXX)
